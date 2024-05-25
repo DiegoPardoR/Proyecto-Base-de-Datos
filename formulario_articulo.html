@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Crear Nuevo Artículo</title>
+</head>
+<body>
+    <header class="site-header">
+        <h1 class="site-title">Biblioteca ECCI</h1>
+    </header>
+    <div class="container">
+        <h1 class="page-title">Crear Nuevo Artículo</h1>
+        <form class="create-form" method="post">
+            <label for="num_inventario" class="form-label">Número de Inventario:</label>
+            <input type="text" id="num_inventario" name="num_inventario" class="form-input">
+            
+            <label for="nombre_articulo" class="form-label">Nombre del Artículo:</label>
+            <input type="text" id="nombre_articulo" name="nombre_articulo" class="form-input">
+            
+            <label for="fecha_compra" class="form-label">Fecha de Compra:</label>
+            <input type="date" id="fecha_compra" name="fecha_compra" class="form-input">
+            
+            <label for="serial_tipo_articulo" class="form-label">Serial/Tipo de Artículo:</label>
+            <input type="text" id="serial_tipo_articulo" name="serial_tipo_articulo" class="form-input">
+            
+            <label for="marca_titulo_articulo" class="form-label">Marca/Título de Artículo:</label>
+            <input type="text" id="marca_titulo_articulo" name="marca_titulo_articulo" class="form-input">
+            
+            <label for="modelo_editorial_articulo" class="form-label">Modelo/Editorial de Artículo:</label>
+            <input type="text" id="modelo_editorial_articulo" name="modelo_editorial_articulo" class="form-input">
+            
+            <input type="submit" value="Guardar Artículo" class="submit-button">
+        </form>
+        <a href="{{ url_for('mostrar_articulos') }}" class="cancel-link">Cancelar</a>
+    </div>
+</body>
+</html>
+
+
+

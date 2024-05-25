@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Lista de Artículos</title>
+</head>
+<body>
+    <header class="site-header">
+        <h1 class="site-title">Biblioteca ECCI</h1>
+    </header>
+    <h1 class="page-title">Lista de Artículos</h1>
+    <a href="/nuevo_articulo" class="boton-agregar">Agregar Artículo</a>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            <ul class="flashes">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    
+    <table class="article-table">
+        <tr>
+            <th>Número de Inventario</th>
+            <th>Nombre del Artículo</th>
+            <th>Fecha de Compra</th>
+            <th>Serial/Tipo de Artículo</th>
+            <th>Marca/Título de Artículo</th>
+            <th>Modelo/Editorial de Artículo</th>
+            <th>Acciones</th>
+        </tr>
+        {% for articulo in articulos %}
+        <tr>
+            <td>{{ articulo[0] }}</td> <!-- NUM_INVENTARIO -->
+            <td>{{ articulo[1] }}</td> <!-- NOMBRE_ARTICULO -->
+            <td>{{ articulo[2] }}</td> <!-- FECHA_COMPRA -->
+            <td>{{ articulo[3] }}</td> <!-- SERIAL_NUMTIPO_ARTICULO -->
+            <td>{{ articulo[4] }}</td> <!-- MARCA_TITULO_ARTICULO -->
+            <td>{{ articulo[5] }}</td> <!-- MODELO_EDITORIAL_ARTICULO -->
+            <td>
+                <a href="/editar_articulo/{{ articulo[0] }}" class="action-link">Editar</a>
+                <a href="/eliminar_articulo/{{ articulo[0] }}" class="action-link">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
